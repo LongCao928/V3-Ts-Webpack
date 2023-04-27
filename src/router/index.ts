@@ -8,6 +8,11 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView,
   },
   {
+    path: "/:pathMatch(.*)*",
+    name: "notfound",
+    component: () => import("@/views/base/notfound.vue")
+  },
+  {
     path: "/about",
     name: "about",
     // route level code-splitting
