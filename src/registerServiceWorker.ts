@@ -2,12 +2,14 @@
 
 import { register } from "register-service-worker";
 
+// 一个简化服务工作者注册的脚本，并使用钩子函数进行常见事件。
+
 if (process.env.NODE_ENV === "production") {
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready() {
       console.log(
         "App is being served from cache by a service worker.\n" +
-          "For more details, visit https://goo.gl/AFskqB"
+        "For more details, visit https://goo.gl/AFskqB"
       );
     },
     registered() {
