@@ -24,7 +24,7 @@ npm run serve
 npm run build
 
 # 构建测试环境
-npm run build-test
+npm run build:test
 ```
 
 ## 🔧 代码格式检查
