@@ -20,6 +20,7 @@ function createService() {
     (response) => {
       // apiData 是 api 返回的数据
       const apiData = response.data
+      return apiData
       // 这个 code 是和后端约定的业务 code
       const code = apiData.code
       // 如果没有 code, 代表这不是项目后端开发的 api
@@ -42,8 +43,10 @@ function createService() {
       }
     },
     (error) => {
+      console.log('error')
+      console.log(error)
       // status 是 HTTP 状态码
-      const status = error.response.status
+      const status = error.code
       switch (status) {
         case 400:
           error.message = '请求错误'
@@ -98,9 +101,11 @@ function createRequestFunction(service: AxiosInstance) {
         // 携带 token
         // 'X-Access-Token': getToken(),
         // 'Content-Type': get(config, 'headers.Content-Type', 'application/json')
+        // 'Content-Type': 'application/json;charset=utf-8'
+        // 'X-Requested-With': 'XMLHttpRequest'
       },
       timeout: 5000,
-      baseURL: process.env.VUE_APP_BASE_API,
+      baseURL: process.env.NODE_ENV === 'development' ? '/api' : process.env.VUE_APP_BASE_API,
       data: {}
     }
     return service(Object.assign(configDefault, config))
