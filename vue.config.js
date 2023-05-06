@@ -2,17 +2,17 @@ const { defineConfig } = require("@vue/cli-service");
 const path = require("path");
 module.exports = defineConfig({
   transpileDependencies: true,
-  publicPath: './',
-  outputDir: 'dist',
-  assetsDir: 'static',
+  // publicPath: './',
+  // outputDir: 'dist',
+  // assetsDir: 'static',
   // 是否开启 eslint 自动校验
   lintOnSave: true,
   // 不输出 map 文件，以加速生产环境构建
   productionSourceMap: false,
   devServer: {
-    devMiddleware: {
-      publicPath: '/',
-    },
+    // devMiddleware: {
+    //   publicPath: '/',
+    // },
     hot: true,
     // port: '9999',
     client: {
@@ -20,19 +20,19 @@ module.exports = defineConfig({
         warnings: false,
         errors: true
       }
-    }
+    },
     // 反向代理
-    // proxy: {
-    //   '/mock-api/': {
-    //     target: 'https://vue-typescript-admin-mock-server-armour.vercel.app/mock-api',
-    //     ws: true,
-    //     pathRewrite: {
-    //       '^/mock-api/': ''
-    //     },
-    //     changeOrigin: true,
-    //     secure: false
-    //   }
-    // }
+    proxy: {
+      '/api/': {
+        target: 'http://jsonplaceholder.typicode.com',
+        ws: true,
+        pathRewrite: {
+          '^/api/': ''
+        },
+        changeOrigin: true,
+        secure: false
+      }
+    }
   },
   configureWebpack: () => {
     return {

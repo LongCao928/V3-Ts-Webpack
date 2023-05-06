@@ -33,6 +33,8 @@ for (const key in files) {
   }
 }
 
+console.log(allRouters)
+
 const routerInstance = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes: allRouters,

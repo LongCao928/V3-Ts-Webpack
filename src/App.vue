@@ -2,7 +2,9 @@
   <nav v-if="isShowNav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
-    <router-link to="/pinia">Pinia</router-link>
+    <router-link to="/pinia">Pinia</router-link> 
+    <!-- <router-link to="/element-plus">element-plus</router-link> | -->
+    <!-- <router-link to="/axios">axios</router-link> -->
   </nav>
   <router-view />
 </template>
